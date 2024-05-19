@@ -59,7 +59,7 @@
                                 <div class="product__details__pic__item">
                                     {% if single_product.model3d %}
                                         <div style="display: flex;justify-content: center; align-items: center; height: 30vh;">
-                                            <model-viewer id="model-viewer" src="{{single_product.model3d.url}}" ar ar-modes="scene-viewer quick-look" camera-controls touch-action="pan-y" alt="3D model" shadow-intensity="2" auto-rotate disable-pan skybox-height="2m" max-camera-orbit="auto 90deg auto">
+                                            <model-viewer id="model-viewer" src="{{single_product.model3d.url}}" ar ar-modes="scene-viewer quick-look" camera-controls touch-action="pan-y" alt="3D model" shadow-intensity="2" auto-rotate disable-pan skybox-image="{{single_product.product_image.url}}" skybox-height="2m" max-camera-orbit="auto 90deg auto">
                                                 <div id="error" class="hide">AR is not supported on this device</div>
                                             </model-viewer>
                                         </div>
