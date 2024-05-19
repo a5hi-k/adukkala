@@ -37,13 +37,17 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                    {% if single_product.product_image_big1 %}
                                     <div class="product__thumb__pic set-bg" data-setbg="{{single_product.product_image_big1.url}}">
+                                     {% endif %}   
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                    {% if single_product.product_image_big2 %}
                                     <div class="product__thumb__pic set-bg" data-setbg="{{single_product.product_image_big2.url}}">
+                                    {% endif %}   
                                     </div>
                                 </a>
                             </li>

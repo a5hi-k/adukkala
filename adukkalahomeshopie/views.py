@@ -53,7 +53,7 @@ def index(request):
     # sixth_category = categories[5]
 
     best_seller_products = Product.objects.all().filter(is_available=True,best_seller=True).order_by('-created_date')[:8]
-    # offer_product = Product.objects.all().filter(is_available=True,offer_product=True).order_by('-created_date')[0]
+    offer_product = Product.objects.all().filter(is_available=True,offer_product=True).order_by('-created_date')[0]
     ads_new = Advertisement.objects.all().order_by('-created_date')
     ads_old = Advertisement.objects.all().order_by('created_date')
 
@@ -64,7 +64,7 @@ def index(request):
         'third_category':third_category,
         'fourth_category':fourth_category,
         'fifth_category':fifth_category,
-        # 'offer_product':offer_product,
+        'offer_product':offer_product,
         'ads_new':ads_new,
         'ads_old':ads_old,
     }
