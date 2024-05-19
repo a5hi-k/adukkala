@@ -1,0 +1,322 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+<!-- Page Preloder -->
+<div id="preloder" style="display: none;">
+    <div class="loader"></div>
+</div>
+
+
+<!-- Text input field -->
+<div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+        <input type="text" id="textInput" class="form-control" placeholder="write your preferences about the product if any">
+    </div>
+</div>
+ <br>
+
+<div style="display: flex; justify-content: center;">
+    <!-- Button to trigger the action -->
+    <button id="compare-button" class="primary-btn">Find The Best Product</button>
+</div>
+
+    <br>
+
+    <div class="row d-flex justify-content-center">
+
+        
+
+
+    <div class="col-lg-6">
+    <!-- Shop Details Section Begin -->
+        <div class="product-box">
+            <section class="shop-details">
+                <div class="product__details__pic">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                        <div class="product__details__pic__item">
+                                            <img src="{{product1.product_image.url}}" alt="product image not available">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__details__content">
+                    <div class="container">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="product__details__text">
+                                    <a href="{{product1.get_url}}"><h4>{{product1.product_name}}</h4></a>
+                                    <div class="rating">
+                                        <div class="rating-star">
+                                            <span>
+                                                <i class="fa fa-star{% if product1.averageReview < 0.5 %}-o{% elif product1.averageReview >= 0.5 and product1.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                <i class="fa fa-star{% if product1.averageReview < 1.5 %}-o{% elif product1.averageReview >= 1.5 and product1.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                <i class="fa fa-star{% if product1.averageReview < 2.5 %}-o{% elif product1.averageReview >= 2.5 and product1.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                <i class="fa fa-star{% if product1.averageReview < 3.5 %}-o{% elif product1.averageReview >= 3.5 and product1.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                <i class="fa fa-star{% if product1.averageReview < 4.5 %}-o{% elif product1.averageReview >= 4.5 and product1.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            </span>
+                                            <span>{{product1.averageReview}} - {{reviews_count1}} Reviews</span>
+                                        </div>
+                                    </div>
+                                    <h3 id="product_price">&#x20b9; {{product1.price}} <span>&#x20b9; {{product1.MRP_price}}</span></h3>
+                                
+                                        
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="product__details__tab">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" style="color: rgb(0, 0, 0);" data-toggle="tab" href="#tabs-5"
+                                            role="tab">Details</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  style="color: rgb(0, 0, 0);" data-toggle="tab" href="#tabs-6" role="tab">Customer
+                                            Reviews({{reviews_count1}})</a>
+                                        </li>
+                                        
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                            <div class="product__details__tab__content">
+                                                <div class="product__details__tab__content__item">
+                                                    <h5>Product Infomation</h5>
+                                                    <p>{{product1.product_description}}</p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                            <div class="product__details__tab__content">
+                                                <div class="product__details__tab__content__item">
+                                                    {% for review in reviews1 %}
+                                                    <div class="review">
+                                                        <div class="profile">
+                                                            <h5 class="username">{{review.user.full_name}}</h5>
+                                                            <p class="date">{{review.updated_at}}</p>
+                                                            <div class="rating-star">
+                                                                <span>
+                                                                    <i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-content">
+                                                            <h5 class="subject">{{review.subject}}</h5>
+                                                            <p class="text">
+                                                                {{review.review}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+            <!-- Shop Details Section End -->
+        </div>
+    </div>
+    <br>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6">
+            <div class="product-box">
+            <!-- Shop Details Section Begin -->
+                    <section class="shop-details">
+                        <div class="product__details__pic">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                                <div class="product__details__pic__item">
+                                                    <img src="{{product2.product_image.url}}" alt="product image not available">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__details__content">
+                            <div class="container">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-8">
+                                        <div class="product__details__text">
+                                            <a href="{{product2.get_url}}"><h4>{{product2.product_name}}</h4></a>
+                                            <div class="rating">
+                                                <div class="rating-star">
+                                                    <span>
+                                                        <i class="fa fa-star{% if product2.averageReview < 0.5 %}-o{% elif product2.averageReview >= 0.5 and product2.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                        <i class="fa fa-star{% if product2.averageReview < 1.5 %}-o{% elif product2.averageReview >= 1.5 and product2.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                        <i class="fa fa-star{% if product2.averageReview < 2.5 %}-o{% elif product2.averageReview >= 2.5 and product2.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                        <i class="fa fa-star{% if product2.averageReview < 3.5 %}-o{% elif product2.averageReview >= 3.5 and product2.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                        <i class="fa fa-star{% if product2.averageReview < 4.5 %}-o{% elif product2.averageReview >= 4.5 and product2.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span>{{product2.averageReview}} - {{reviews_count2}} Reviews</span>
+                                                </div>
+                                            </div>
+                                            <h3 id="product_price">&#x20b9; {{product2.price}} <span>&#x20b9; {{product2.MRP_price}}</span></h3>
+                                        
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                
+                                
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="product__details__tab">
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" style="color: rgb(0, 0, 0);" data-toggle="tab" href="#tabs-7"
+                                                    role="tab">Details</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link"  style="color: rgb(0, 0, 0);" data-toggle="tab" href="#tabs-8" role="tab">Customer
+                                                    Reviews({{reviews_count2}})</a>
+                                                </li>
+                                                
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tabs-7" role="tabpanel">
+                                                    <div class="product__details__tab__content">
+                                                        <div class="product__details__tab__content__item">
+                                                            <h5>Product Infomation</h5>
+                                                            <p>{{product2.product_description}}</p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tabs-8" role="tabpanel">
+                                                    <div class="product__details__tab__content">
+                                                        <div class="product__details__tab__content__item">
+                                                            {% for review in reviews2 %}
+                                                            <div class="review">
+                                                                <div class="profile">
+                                                                    <h5 class="username">{{review.user.full_name}}</h5>
+                                                                    <p class="date">{{review.updated_at}}</p>
+                                                                    <div class="rating-star">
+                                                                        <span>
+                                                                            <i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                            <i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                            <i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                            <i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                            <i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="review-content">
+                                                                    <h5 class="subject">{{review.subject}}</h5>
+                                                                    <p class="text">
+                                                                        {{review.review}}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                    <!-- Shop Details Section End -->
+            </div>
+                
+              
+    </div>
+    <br>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get references to the button and text input elements
+            var preloder = document.getElementById("preloder");
+            var compareButton = document.getElementById("compare-button");
+            var textInput = document.getElementById("textInput");
+    
+            // Add click event listener to the button
+            compareButton.addEventListener("click", function() {
+                // Get the text from the input field
+                var text = textInput.value;
+    
+                // Encode the text for URL
+                var encodedText = encodeURIComponent(text);
+    
+                // Construct the URL for the GET request (replace 'url_here' with the actual URL)
+                var url = "{% url 'compare_ai' product1.id product2.id %}?text=" + encodedText;
+    
+                // Send the GET request
+                window.location.href = url;
+
+                preloder.style.display = "block";
+            });
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get references to the loader element and anger tag
+            var preloder = document.getElementById("preloder");
+            var angerTag = document.getElementById("anger-tag");
+    
+            // Add click event listener to the anger tag
+            angerTag.addEventListener("click", function() {
+                // Show the loader
+                preloder.style.display = "block";
+    
+                
+            });
+        });
+    </script>
+
+
+
+{% endblock %}    

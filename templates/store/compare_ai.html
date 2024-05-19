@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+
+<div class="row d-flex justify-content-center">
+
+        
+
+
+    <div class="col-lg-6">
+    <!-- Shop Details Section Begin -->
+        <div class="product-box">
+            <section class="shop-details">
+                <div class="product__details__pic">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="tab-content">
+                                    <a href="{{product1.get_url}}"> <h5>{{product1.product_name}}</h5></a>
+                                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                        <div class="product__details__pic__item">
+                                           <img src="{{product1.product_image.url}}" alt="product image not available">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="tab-content">
+                                    <a href="{{product2.get_url}}"> <h5>{{product2.product_name}}</h5></a>
+                                    <div class="tab-pane active" id="tabs-2" role="tabpanel">
+                                        <div class="product__details__pic__item">
+                                           <img src="{{product2.product_image.url}}" alt="product image not available">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product__details__content">
+                    <div class="container">
+                        <div class="row d-flex justify-content-center text-center">
+                           <h3>AI Suggestion</h3>
+                           <br>
+                            <div style="background-color: bisque;">
+                                <p>{{suggestion}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </section>
+        </div>
+            <!-- Shop Details Section End -->
+    </div>
+</div>
+    
+
+
+{% endblock %}    

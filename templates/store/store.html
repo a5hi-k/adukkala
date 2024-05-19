@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Shop</h4>
+                    <div class="breadcrumb__links">
+                        <a href="{% url 'index' %}">Home</a>
+                        <span>Shop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <!-- <div class="shop__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div> -->
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <li><a style="color: rgb(69, 69, 69);" href="{% url 'store' %}">All Products</a></li> 
+                                                {% for category in links %}
+                                                    <li><a style="color: rgb(69, 69, 69);" href="{{category.get_url}}">{{category.category_name}}</a></li> 
+                                                {% endfor %}                                               
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__brand">
+                                            <ul>
+                                                <li><a style="color: rgb(69, 69, 69);" href="#">Louis Vuitton</a></li>
+                                                <li><a style="color: rgb(69, 69, 69);" href="#">Chanel</a></li>
+                                                <li><a style="color: rgb(69, 69, 69);" href="#">Hermes</a></li>
+                                                <li><a style="color: rgb(69, 69, 69);" href="#">Gucci</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
+                                </div>
+                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__price">
+                                            <ul>
+                                                <li><a href="#">$0.00 - $50.00</a></li>
+                                                <li><a href="#">$50.00 - $100.00</a></li>
+                                                <li><a href="#">$100.00 - $150.00</a></li>
+                                                <li><a href="#">$150.00 - $200.00</a></li>
+                                                <li><a href="#">$200.00 - $250.00</a></li>
+                                                <li><a href="#">250.00+</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Showing {{start}} - {{end}} of {{tot_prod_count}} results</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__right">
+                                <p>Sort by Price:</p>
+                                <select>
+                                    <option value="">Low To High</option>
+                                    <option value="">$0 - $55</option>
+                                    <option value="">$55 - $100</option>
+                                </select>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row">
+            {% if products %}
+                {% for product in products %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product-box">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg">
+                               <a href="{{product.get_url}}"> <img src="{{product.product_image.url}}" alt="product image"> </a>                                                               
+                                <ul class="product__hover">
+                                    <li><a href="{% url 'add_wishlist' product.id %}"><img src="{% static 'img/icon/heart.png' %}" alt="img"><span>Add to wishlist</span></a></li>
+                                    <li><a href="{% url 'compare_select' product.id %}"><img src="{% static 'img/icon/compare.png' %}" alt="img"> <span>Compare</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>{{product.product_name}}</h6>
+                                {% if product.stock > 0 %}
+                                    <a href="{% url 'add_cart' product.id %}" class="add-cart">+ Add To Cart</a>
+                                {% endif %}
+                                {% if product.countReview %}
+                                <div class="rating">
+                                    <div class="rating-star">
+                                        <span>
+                                            <i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        </span>
+                                        <span>&nbsp;&nbsp;{{product.averageReview}}</span>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <span>No reviews yet</span>
+                                {% endif %}
+                                <h5>&#x20b9; {{product.price}}</h5><span style="color: red;text-decoration: line-through;">&#x20b9; {{product.MRP_price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                {% endfor %}
+            {% else %}  
+            <div class="col-lg-6 col-md-12 col-sm-12" style="text-align: center;">
+                <h2 style="color: red;">No products to display</h2>
+            </div> 
+            {% endif %} 
+                    
+            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% if products.has_other_pages %}
+                        <div class="product__pagination">
+                            {% if products.has_previous %}
+                                <a href="?page=1">1</a>
+                                <a href="?page={{products.previous_page_number}}">{{products.previous_page_number}} &laquo;</a>
+                            {% endif %}    
+                            <!-- <a class="active" href="#">1</a> -->
+                            <span class="current">
+                                Page {{products.number}} of {{products.paginator.num_pages}}
+                            </span>
+                            {%  if products.has_next %}
+                                <a href="?page={{products.next_page_number}}">{{products.next_page_number}} &raquo;</a>
+                                <a href="?page={{products.paginator.num_pages}}">{{products.paginator.num_pages}}</a>
+                            {% endif %}    
+                            <!-- <a href="#">2</a>
+                            <a href="#">3</a>
+                            <span>...</span>
+                            <a href="#">21</a> -->
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->
+
+
+
+{% endblock %}

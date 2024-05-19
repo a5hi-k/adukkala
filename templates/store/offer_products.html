@@ -1,0 +1,90 @@
+
+    
+    {% extends 'base.html' %}
+    
+    {% load static %}
+    
+    {% block content %}
+
+
+    
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+
+    
+    <!-- Categories Section Begin -->
+
+    <section class="categories spad">
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="categories__deal__countdown">
+                        <span>Hurry up!</span>
+                        
+                        <div class="categories__deal__countdown__timer" id="countdown">
+                            <div class="cd-item">
+                                <span>3</span>
+                                <p>Days</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>1</span>
+                                <p>Hours</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>50</span>
+                                <p>Minutes</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>18</span>
+                                <p>Seconds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    {% for offer_product in offer_products %}
+    <section class="categories spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="categories__text">
+                        <h2>Adukkala<br /> <span>{{offer_product.category.category_name}}</span> <br /> Collection</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="categories__hot__deal">
+                        <a href="{{offer_product.get_url}}"><img src="{{offer_product.product_image.url}}" alt="Product image not available"></a>
+                        <div class="hot__deal__sticker">
+                            <span>Sale Of</span>
+                            <h5>&#x20b9; {{offer_product.price}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="categories__deal__countdown">
+                        <span>Deal Of The Week</span>
+                        <h2>{{offer_product.product_name}}</h2>
+                    </div>
+                    <a href="{{offer_product.get_url}}" class="primary-btn">Buy now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+{% endfor %}
+  
+
+
+    
+{% endblock %}

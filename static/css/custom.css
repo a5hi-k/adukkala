@@ -1,0 +1,263 @@
+
+.rate > input{
+    display : none;
+}
+
+.rate{
+    display: inline-block;
+    border: 0;
+}
+
+.rate > label{
+    float:right;
+}
+
+
+.rate > label:before {
+    display: inline-block;
+    font-size: 1.1em;
+    font-family:FontAwesome;
+    content: "\f005";
+    margin: 0;
+    padding: 0.3rem .2rem;
+    cursor: pointer;
+
+}
+
+.rate .half:before{
+    content: "\f089";
+    position: absolute;
+    padding-right: 0;
+}
+
+input:checked ~ label,label:hover ~ label{
+    color:#FFD700;
+
+}
+
+input:checked + label:hover, input:checked ~ label:hover,input:checked ~ label:hover ~ label,
+label:hover ~ input:checked ~ label{
+    color: #cc9000;
+}
+
+
+
+.rating-star i {
+    color:#FFD700 !important;
+}
+
+
+
+
+.review {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.profile {
+    float: left;
+    width: 30%;
+    margin-right: 20px;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.review-content {
+    overflow: hidden;
+}
+
+.username {
+    margin: 0;
+}
+
+.date {
+    margin: 5px 0;
+    color: #999;
+}
+
+.subject {
+    margin-top: 0;
+}
+
+.text {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.product-box {
+    border: 1px solid #e0e0e0; /* Border color and thickness */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding inside the box */
+    margin-bottom: 20px; /* Spacing between each product box */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.product-box:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Stronger box shadow effect on hover */
+}
+
+.product-box:hover .product__item__pic img {
+    transform: scale(1.05); /* Zoom effect on image */
+}
+
+
+
+/* Chat Container */
+.chat-container {
+    position: fixed;
+    bottom: 15px;
+    right: 30px;
+    z-index: 10000;
+  }
+  /* #007bff */
+  /* Chat Icon */
+  .chat-icon {
+    background-color: #007bff;
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+    /* Glossy glass shadow effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 -20px 40px rgba(255, 255, 255, 0.4);
+  }
+  
+  .chat-icon img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .chat-icon:hover {
+    transform: scale(1.4);
+  }
+  
+ /* Chat Box */
+.chat-box {
+    width: 100%; /* Adjust width as needed */
+    max-width: 800px; /* Maximum width */
+    background-color: #333; /* Background color for the chat box */
+    color: #fff; /* Text color */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    margin: 0 auto; /* Center the chat box horizontally */
+  }
+  
+  /* User Message */
+  .message.user {
+    background-color: #464646; /* Dark gray background for user messages */
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Bot Message */
+  .message.bot {
+    background-color: #686868; /* Darker gray background for bot messages */
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Message Icon */
+  .message-icon {
+    margin-right: 10px;
+  }
+  
+  .chat-header {
+    background-color: #ff5c5cd4;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .chat-header h4 {
+    margin: 0;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .chat-body {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .chat-footer {
+    display: flex;
+    padding: 10px;
+  }
+  
+  .chat-footer input {
+    flex-grow: 1;
+    padding: 5px;
+  }
+  
+  .chat-footer button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+
+/* whatsapp icon */
+
+.whatsapp-chat{
+    position: fixed;
+    bottom: 03%;
+    left: 2%;
+    box-shadow: 0 10px 30px rgba(0, 114, 0, 0.514), inset 0 -20px 40px rgba(0, 255, 0, 0.468);
+    transition: transform 0.2s;
+    z-index: 1000;
+}
+
+.whatsapp-chat:hover {
+    transform: scale(1.4);
+  }
+
+
+
+.product__details__pic__item img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+@media (max-width: 768px) {
+    .col-sm-12 {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+
+
+  /* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .chat-box {
+      width: 90%; /* Adjust width for smaller screens */
+      max-width: 100%;
+      margin: 0 auto; /* Center the chat box horizontally */
+    }
+  }

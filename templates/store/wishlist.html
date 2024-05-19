@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Your Wishlist</h4>
+                    <div class="breadcrumb__links">
+                        <a href="{% url 'index' %}">Home</a>
+                        <a href="{% url 'store' %}">Shop</a>
+                        <span>Wishlist</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            {% if wishlist_items %}
+                {% for item in wishlist_items %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product-box"> 
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg">
+                               <a href="{{item.product.get_url}}"> <img src="{{item.product.product_image.url}}" alt="product image"> </a>                                                               
+                                <ul class="product__hover">
+                                    <li><a href="{% url 'add_wishlist' item.product.id %}"><img src="{% static 'img/icon/heart.png' %}" alt="img"><span>Add to wishlist</span></a></li>
+                                    <li><a href="{% url 'compare_select' item.product.id %}"><img src="{% static 'img/icon/compare.png' %}" alt="img"> <span>Compare</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>{{item.product.product_name}}</h6>
+                                {% if product.stock > 0 %}
+                                    <a href="{% url 'add_cart' item.product.id %}" class="add-cart">+ Add To Cart</a>
+                                {% endif %}
+                                {% if item.product.countReview %}
+                                <div class="rating">
+                                    <div class="rating-star">
+                                        <span>
+                                            <i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        </span>
+                                        <span>&nbsp;&nbsp;{{item.product.averageReview}}</span>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <span>No reviews yet</span>
+                                {% endif %}
+                                <h5>&#x20b9; {{item.product.price}}</h5><span style="color: red;text-decoration: line-through;">&#x20b9; {{item.product.MRP_price}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                {% endfor %}
+            {% else %}  
+            <div class="col-lg-6 col-md-12 col-sm-12" style="text-align: center;">
+                <h2 style="color: red;">No products to display</h2>
+            </div> 
+            {% endif %} 
+                    
+           </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->
+
+
+
+{% endblock %}

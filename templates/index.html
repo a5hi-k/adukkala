@@ -1,0 +1,343 @@
+
+    
+    {% extends 'base.html' %}
+    
+    {% load static %}
+    
+    {% block content %}
+
+
+    
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__items set-bg" data-setbg="{% static 'img/hero/bg6.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="hero__text">
+                                <h6>Kitchen Collection</h6>
+                                <h2>Everything you need for your Adukkala</h2>
+                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
+                                commitment to exceptional quality.</p>
+                                <a href="{% url 'store' %}" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <div class="hero__social">
+                                    <a href="https://www.facebook.com/adukkala.homeshoppy?mibextid=ZbWKwL" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <!-- <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a> -->
+                                    <a href="https://www.instagram.com/adukkala_shop?igsh=cGtqanI3M2NsamVq" target="_blank"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__items set-bg" data-setbg="{% static 'img/hero/bg5.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="hero__text">
+                                <h6>Kitchen Collection</h6>
+                                <h2>Exciting exchange offers at Adukkala</h2>
+                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
+                                commitment to exceptional quality.</p>
+                                <a href="{% url 'store' %}" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <div class="hero__social">
+                                    <a href="https://www.facebook.com/adukkala.homeshoppy?mibextid=ZbWKwL" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <!-- <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a> -->
+                                    <a href="https://www.instagram.com/adukkala_shop?igsh=cGtqanI3M2NsamVq" target="_blank"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- AD section begin-->
+    <section style=" background: linear-gradient(to bottom,#5b0000bf, transparent)">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div id="carouselLeft" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="3000">
+                    <img style="width: 440px;height: 440px;" src="{% static 'img/ad/demo_ad.jpeg' %}" class="d-block w-100" alt="ad image">
+                  </div>
+                  {% for ads in ads_new %}
+                  <div class="carousel-item" data-bs-interval="4000">
+                    <img style="width: 440px;height: 440px;" src="{{ads.ad_image.url}}" class="d-block w-100" alt="ad image">
+                  </div>
+                  {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselRight" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselRight" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+          </div>
+          <div class="col-md-6">
+            <div id="carouselRight" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000">
+                  <img style="width: 440px;height: 440px;" src="{% static 'img/ad/demo_ad1.jpeg' %}" class="d-block w-100" alt="ad image">
+                </div>
+                {% for ads in ads_old %}
+                <div class="carousel-item" data-bs-interval="6000">
+                  <img style="width: 440px;height: 440px;" src="{{ads.ad_image.url}}" class="d-block w-100" alt="ad image">
+                </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselRight" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselRight" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- AD section end-->
+
+    <!-- Banner Section Begin -->
+    <section class="banner spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 offset-lg-4">
+                    <div class="banner__item">
+                        <div class="banner__item__pic">
+                            <a href="{{first_category.get_url}}"><img style="height: 440px; width: 440px;" src="{{first_category.category_image.url}}" alt="not found" /></a>
+                            <!-- <img src="{% static 'img/banner/banner-1.jpg' %}" alt=""> -->
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>{{first_category.category_name}}</h2>
+                            <a href="{{first_category.get_url}}">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="banner__item banner__item--middle">
+                        <div class="banner__item__pic">
+                            <a href="{{second_category.get_url}}"> <img style="height: 440px; width: 440px;" src="{{second_category.category_image.url}}" alt="not found"></a>
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>{{second_category.category_name}}</h2>
+                            <a href="{{second_category.get_url}}">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="banner__item banner__item--last">
+                        <div class="banner__item__pic">
+                            <a href="{{third_category.get_url}}"> <img style="height: 440px; width: 440px;" src="{{third_category.category_image.url}}" alt="not found"></a>
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>{{third_category.category_name}}</h2>
+                            <a href="{{third_category.get_url}}">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 offset-lg-4">
+                    <div class="banner__item">
+                        <div class="banner__item__pic">
+                            <a href="{{fourth_category.get_url}}"> <img style="height: 440px; width: 440px;" src="{{fourth_category.category_image.url}}" alt="not found" /></a>
+                            <!-- <img src="{% static 'img/banner/banner-1.jpg' %}" alt=""> -->
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>{{fourth_category.category_name}}</h2>
+                            <a href="{{fourth_category.get_url}}">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="banner__item banner__item--middle">
+                        <div class="banner__item__pic">
+                            <a href="{{fifth_category.get_url}}"><img style="height: 440px; width: 440px;" src="{{fifth_category.category_image.url}}" alt="not found"></a>
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>{{fifth_category.category_name}}</h2>
+                            <a href="{{fifth_category.get_url}}">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-7">
+                    <div class="banner__item banner__item--last">
+                        <div class="banner__item__pic">
+                            <img style="height: 440px; width: 440px;" src="{{sixth_category.category_image.url}}" alt="">
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>{{sixth_category.category_name}} 2030</h2>
+                            <a href="#">Shop now</a>
+                        </div>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section End -->
+    
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="filter__controls">
+                        <li class="active" data-filter="*">Best Sellers</li>                        
+                        <li data-filter=".hot-sales">Hot Sales</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row product__filter">
+                {% for product in products %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product-box">
+                    <div class="product__item">
+                       <!-- <div class="product__item__pic set-bg" data-setbg="{{product.product_image.url}}">  -->
+                        <div class="product__item__pic set-bg">
+                            <a href="{{product.get_url}}"> <img src="{{product.product_image.url}}" alt="Product image not available"> </a>                        
+                            <ul class="product__hover">
+                                <li><a href="{% url 'add_wishlist' product.id %}"><img src="{% static 'img/icon/heart.png' %}" alt="img"> <span>Add to wishlist</span></a></li>
+                                <li><a href="{% url 'compare_select' product.id %}"><img src="{% static 'img/icon/compare.png' %}" alt="img"> <span>Compare</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>{{product.product_name}}</h6>
+                            {% if product.stock > 0 %}
+                                <a href="{% url 'add_cart' product.id %}" class="add-cart">+ Add To Cart</a>
+                            {% endif %}
+                            {% if product.countReview %}
+                                <div class="rating">
+                                    <div class="rating-star">
+                                        <span>
+                                            <i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                            <i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+                                        </span>
+                                        <span>&nbsp;&nbsp;{{product.averageReview}}</span>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <span>No reviews yet</span>
+                                {% endif %}
+                            <h5>&#x20b9; {{product.price}}</h5><span style="color: red;text-decoration: line-through;">&#x20b9; {{product.MRP_price}}</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+               
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+    <!-- Categories Section Begin -->
+    <section class="categories spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="categories__text">
+                        <h2>Adukkala<br /> <span>{{offer_product.category.category_name}}</span> <br /> Collection</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="categories__hot__deal">
+                        <a href="{{offer_product.get_url}}"><img src="{{offer_product.product_image.url}}" alt="Product image not available"></a>
+                        <div class="hot__deal__sticker">
+                            <span>Sale Of</span>
+                            <h5>&#x20b9; {{offer_product.price}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="categories__deal__countdown">
+                        <span>Deal Of The Week</span>
+                        <h2>{{offer_product.product_name}}</h2>
+                        <div class="categories__deal__countdown__timer" id="countdown">
+                            <div class="cd-item">
+                                <span>3</span>
+                                <p>Days</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>1</span>
+                                <p>Hours</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>50</span>
+                                <p>Minutes</p>
+                            </div>
+                            <div class="cd-item">
+                                <span>18</span>
+                                <p>Seconds</p>
+                            </div>
+                        </div>
+                        <a href="{% url 'offer_products' %}" class="primary-btn">See More Options</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Instagram Section Begin -->
+    <section class="instagram spad"  style=" background: linear-gradient(to bottom,#5b0000bf, transparent)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="instagram__pic">
+                        <div class="instagram__pic__item set-bg" style="position: relative;"> <video style="width: 100%;height: 100%;object-fit: cover;position: absolute;top: 0;left: 0;" src="{% static 'videos/v11.mp4' %}" type="video/mp4" autoplay muted loop ></video></div>
+                        <div class="instagram__pic__item set-bg" style="position: relative;"> <video style="width: 100%;height: 100%;object-fit: cover;position: absolute;top: 0;left: 0;" src="{% static 'videos/v22.mp4' %}" type="video/mp4" autoplay muted loop ></video></div>                        
+                        <div class="instagram__pic__item set-bg" style="position: relative;"> <video style="width: 100%;height: 100%;object-fit: cover;position: absolute;top: 0;left: 0;" src="{% static 'videos/v33.mp4' %}" type="video/mp4" autoplay muted loop ></video></div> 
+                        <div class="instagram__pic__item set-bg" style="position: relative;"> <video style="width: 100%;height: 100%;object-fit: cover;position: absolute;top: 0;left: 0;" src="{% static 'videos/v44.mp4' %}" type="video/mp4" autoplay muted loop ></video></div>
+                        <div class="instagram__pic__item set-bg" style="position: relative;"> <video style="width: 100%;height: 100%;object-fit: cover;position: absolute;top: 0;left: 0;" src="{% static 'videos/v55.mp4' %}" type="video/mp4" autoplay muted loop ></video></div>
+                        <div class="instagram__pic__item set-bg" style="position: relative;"> <video style="width: 100%;height: 100%;object-fit: cover;position: absolute;top: 0;left: 0;" src="{% static 'videos/v66.mp4' %}" type="video/mp4" autoplay muted loop ></video></div>                        
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="instagram__text">
+                        <h2>Visit our shop</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                       <a href="https://www.instagram.com/adukkala_shop?igsh=cGtqanI3M2NsamVq" target="_blank"> <h3>#adukkala_shop</h3></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Instagram Section End -->
+
+    <!-- Latest Blog Section Begin -->
+    <section class="latest spad">
+        <div class="container">
+            <div class="row">
+                
+            </div>
+           
+        </div>
+    </section>
+    <!-- Latest Blog Section End -->
+
+   
+
+    
+{% endblock %}

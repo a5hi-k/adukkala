@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container" style="margin-top: 50px;">
+    <center><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="#DC3545" class="bi bi-x-circle" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm-.97-10.97l3.97 3.97a.75.75 0 1 1-1.06 1.06l-3.97-3.97-3.97 3.97a.75.75 0 1 1-1.06-1.06l3.97-3.97-3.97-3.97a.75.75 0 0 1 1.06-1.06l3.97 3.97 3.97-3.97a.75.75 0 0 1 1.06 1.06l-3.97 3.97z"/>
+      </svg></center>
+    <h2 class="text-center">Payment Failed</h2>
+	<br>
+	<div class="text-center">
+		<a href="{% url 'store' %}" class="btn btn-success">Shop more</a>
+	</div>
+</div>
+
+<div class="text-center">
+    <h3>
+        Sorry your payment has been failed! Please try again later
+    </h3>
+    <br>
+    <h5>
+        In case your money has been deducted, it will be refunded within 7 - 10 days.
+    </h5>
+</div>
+
+
+{% endblock %}
