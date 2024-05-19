@@ -70,12 +70,16 @@
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__pic__item">
+                                    {% if single_product.product_image_big1 %}
                                     <img src="{{single_product.product_image_big1.url}}" alt="product image not available">
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__pic__item">
+                                    {% if single_product.product_image_big1 %}
                                     <img src="{{single_product.product_image_big2.url}}" alt="product image not available">
+                                    {% endif %}
                                 </div>
                             </div>
 
