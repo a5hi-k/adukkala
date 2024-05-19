@@ -44,12 +44,12 @@ from langchain.chains import LLMChain
 
 def index(request):
 
-    # categories = Category.objects.all().filter(home_page_show=True)[:5]
-    # first_category = categories[0]
-    # second_category = categories[1]
-    # third_category = categories[2]
-    # fourth_category = categories[3]
-    # fifth_category = categories[4]
+    categories = Category.objects.all().filter(home_page_show=True)[:5]
+    first_category = categories[0]
+    second_category = categories[1]
+    third_category = categories[2]
+    fourth_category = categories[3]
+    fifth_category = categories[4]
     # sixth_category = categories[5]
 
     best_seller_products = Product.objects.all().filter(is_available=True,best_seller=True).order_by('-created_date')[:8]
@@ -59,11 +59,11 @@ def index(request):
 
     context = {
         'products': best_seller_products,
-        # 'first_category':first_category,
-        # 'second_category':second_category,
-        # 'third_category':third_category,
-        # 'fourth_category':fourth_category,
-        # 'fifth_category':fifth_category,
+        'first_category':first_category,
+        'second_category':second_category,
+        'third_category':third_category,
+        'fourth_category':fourth_category,
+        'fifth_category':fifth_category,
         # 'offer_product':offer_product,
         'ads_new':ads_new,
         'ads_old':ads_old,
