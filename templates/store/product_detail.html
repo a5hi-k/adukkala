@@ -38,17 +38,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
                                     {% if single_product.product_image_big1 %}
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{single_product.product_image_big1.url}}">
-                                     {% endif %}   
+                                    <div class="product__thumb__pic set-bg" data-setbg="{{single_product.product_image_big1.url}}">   
                                     </div>
+                                    {% endif %}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
                                     {% if single_product.product_image_big2 %}
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{single_product.product_image_big2.url}}">
-                                    {% endif %}   
+                                    <div class="product__thumb__pic set-bg" data-setbg="{{single_product.product_image_big2.url}}">  
                                     </div>
+                                    {% endif %} 
                                 </a>
                             </li>
                         </ul>
@@ -59,7 +59,7 @@
                                 <div class="product__details__pic__item">
                                     {% if single_product.model3d %}
                                         <div style="display: flex;justify-content: center; align-items: center; height: 30vh;">
-                                            <model-viewer id="model-viewer" src="{{single_product.model3d.url}}" ar ar-modes="scene-viewer quick-look" camera-controls touch-action="pan-y" alt="3D model" shadow-intensity="2" auto-rotate disable-pan skybox-image="{{single_product.product_image.url}}" skybox-height="2m" max-camera-orbit="auto 90deg auto">
+                                            <model-viewer id="model-viewer" src="{{single_product.model3d.url}}" ar ar-modes="scene-viewer quick-look" camera-controls touch-action="pan-y" alt="3D model" shadow-intensity="2" auto-rotate disable-pan skybox-height="1m" max-camera-orbit="auto 90deg auto">
                                                 <div id="error" class="hide">AR is not supported on this device</div>
                                             </model-viewer>
                                         </div>
@@ -77,10 +77,10 @@
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    {% if single_product.product_image_big1 %}
+                                    {% if single_product.product_image_big2 %}
                                     <img src="{{single_product.product_image_big2.url}}" alt="product image not available">
-                                    {% endif %}
                                 </div>
+                                    {% endif %}
                             </div>
 
                             <div class="tab-pane" id="tabs-4" role="tabpanel">
